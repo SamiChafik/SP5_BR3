@@ -21,10 +21,10 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @PostMapping
-    public UserDto addUser(@RequestBody UserDto userDto) {
-        return userService.SaveUser(userDto);
-    }
+//    @PostMapping
+//    public UserDto addUser(@RequestBody UserDto userDto) {
+//        return userService.SaveUser(userDto);
+//    }
 
     @GetMapping("/{id}")
     public UserDto getUserById(@PathVariable Long id) {

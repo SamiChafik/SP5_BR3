@@ -2,11 +2,10 @@ package com.example.HelloEvents.services;
 
 import com.example.HelloEvents.dto.ReservationDto;
 import com.example.HelloEvents.mapper.ReservationMapper;
-import com.example.HelloEvents.repository.UserRepository;
-import com.example.HelloEvents.repository.EventRepository;
-import com.example.HelloEvents.repository.ReservationRepository;
+import com.example.HelloEvents.repositories.UserRepository;
+import com.example.HelloEvents.repositories.EventRepository;
+import com.example.HelloEvents.repositories.ReservationRepository;
 import com.example.HelloEvents.entities.Reservation;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

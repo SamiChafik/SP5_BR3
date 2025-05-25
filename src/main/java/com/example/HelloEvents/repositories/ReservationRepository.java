@@ -1,4 +1,4 @@
-package com.example.HelloEvents.repository;
+package com.example.HelloEvents.repositories;
 
 import com.example.HelloEvents.entities.Reservation;
 import org.springframework.data.jpa.repository.JpaRepository;

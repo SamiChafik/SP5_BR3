@@ -2,9 +2,8 @@ package com.example.HelloEvents.services;
 
 import com.example.HelloEvents.dto.EventDto;
 import com.example.HelloEvents.mapper.EventMapper;
-import com.example.HelloEvents.repository.EventRepository;
+import com.example.HelloEvents.repositories.EventRepository;
 import com.example.HelloEvents.entities.Event;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -3,7 +3,7 @@ package com.example.HelloEvents.services;
 import com.example.HelloEvents.dto.UserDto;
 import com.example.HelloEvents.entities.User;
 import com.example.HelloEvents.mapper.UserMapper;
-import com.example.HelloEvents.repository.UserRepository;
+import com.example.HelloEvents.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
