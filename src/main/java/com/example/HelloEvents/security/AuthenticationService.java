@@ -19,10 +19,8 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
-    private final UserDetailsServiceImpl userDetailsService;
 
-    public AuthenticationService(UserDetailsServiceImpl userDetailsService, AuthenticationManager authenticationManager, JwtService jwtService, PasswordEncoder passwordEncoder, UserRepository userRepository) {
-        this.userDetailsService = userDetailsService;
+    public AuthenticationService(AuthenticationManager authenticationManager, JwtService jwtService, PasswordEncoder passwordEncoder, UserRepository userRepository) {
         this.authenticationManager = authenticationManager;
         this.jwtService = jwtService;
         this.passwordEncoder = passwordEncoder;
@@ -38,7 +36,12 @@ public class AuthenticationService {
                 .build();
         userRepository.save(user);
 
-        UserDetails userDetails = userDetailsService.toUserDetails(user);
+        UserDetails userDetails = org.springframework.security.core.userdetails.User.builder()
+                .username(user.getEmail())
+                .password(user.getPassword())
+                .roles(user.getRole().name())
+                .build();
+
         var jwtToken = jwtService.generateToken(userDetails);
         return new AuthenticationResponse(jwtToken);
     }
@@ -53,7 +56,12 @@ public class AuthenticationService {
         var user = userRepository.findByEmail(request.email())
                 .orElseThrow();
 
-        UserDetails userDetails = userDetailsService.toUserDetails(user);
+        UserDetails userDetails = org.springframework.security.core.userdetails.User.builder()
+                .username(user.getEmail())
+                .password(user.getPassword())
+                .roles(user.getRole().name())
+                .build();
+
         var jwtToken = jwtService.generateToken(userDetails);
         return new AuthenticationResponse(jwtToken);
     }

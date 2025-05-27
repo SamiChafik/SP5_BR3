@@ -41,7 +41,10 @@ public class SecurityConfig {
                         .requestMatchers("/user/**").hasRole("ADMIN") // All other user operations
                         .anyRequest().authenticated()
                 )
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+                .sessionManagement(session -> session
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)  // JWT doesn't need sessions
+                )
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);//search about it
 
         return http.build();
     }
