@@ -49,6 +49,10 @@ public class ResrvationService {
                 .orElseThrow(()->new RuntimeException("Reservation Not Found"));
     }
 
+    public Long getReservationCount (Long event_id) {
+        return reservationRepository.getCountOfReservationsByEvent(event_id);
+    }
+
 
 
 }
