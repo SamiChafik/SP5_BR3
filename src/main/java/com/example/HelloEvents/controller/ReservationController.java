@@ -30,4 +30,9 @@ public class ReservationController {
     public ReservationDto getreservationById(@PathVariable Long id) {
         return resrvationService.getReservationById(id);
     }
+
+    @GetMapping("/{event_id}")
+    public Long getReservationCount (@PathVariable Long event_id) {
+        return resrvationService.getReservationCount(event_id);
+    }
 }
