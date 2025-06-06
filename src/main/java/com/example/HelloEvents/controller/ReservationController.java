@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("reservation")
+@CrossOrigin("*")
 public class ReservationController {
     public ReservationController(ResrvationService resrvationService) {
         this.resrvationService = resrvationService;
@@ -29,10 +30,5 @@ public class ReservationController {
     @GetMapping("/{id}")
     public ReservationDto getreservationById(@PathVariable Long id) {
         return resrvationService.getReservationById(id);
-    }
-
-    @GetMapping("/{event_id}")
-    public Long getReservationCount (@PathVariable Long event_id) {
-        return resrvationService.getReservationCount(event_id);
     }
 }

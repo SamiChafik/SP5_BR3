@@ -8,13 +8,11 @@ import com.example.HelloEvents.repositories.UserRepository;
 import com.example.HelloEvents.security.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
+@CrossOrigin("*")
 public class AuthenticationController {
 
     private final AuthenticationService authenticationService;
@@ -35,8 +33,7 @@ public class AuthenticationController {
 
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(
-            @RequestBody AuthenticationRequest request
-    ) {
+            @RequestBody AuthenticationRequest request    ) {
         return ResponseEntity.ok(authenticationService.authenticate(request));
     }
 }
