@@ -1,5 +1,6 @@
 package com.example.HelloEvents.security;
 
+import com.example.HelloEvents.entities.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -22,19 +23,42 @@ public class JwtService {
         return extractClaim(token, Claims::getSubject);
     }
 
+    public Long extractUserId(String token) {
+        return extractClaim(token, claims -> claims.get("userId", Long.class));
+    }
+
+    public String extractUserEmail(String token) {
+        return extractClaim(token, claims -> claims.get("email", String.class));
+    }
+
+    public String extractUserName(String token) {
+        return extractClaim(token, claims -> claims.get("name", String.class));
+    }
+
+    public String extractUserRole(String token) {
+        return extractClaim(token, claims -> claims.get("role", String.class));
+    }
+
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
         final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
     }
 
-    public String generateToken(UserDetails userDetails) {
-        return generateToken(new HashMap<>(), userDetails);
+    public String generateToken(UserDetails userDetails, User user) {
+        return generateToken(new HashMap<>(), userDetails, user);
     }
 
     public String generateToken(
             Map<String, Object> extraClaims,
-            UserDetails userDetails
+            UserDetails userDetails,
+            User user
+
     ) {
+        extraClaims.put("userId", user.getId());
+        extraClaims.put("email", user.getEmail());
+        extraClaims.put("name", user.getName());
+        extraClaims.put("role", user.getRole().name());
+
         return Jwts
                 .builder()
                 .setClaims(extraClaims)
