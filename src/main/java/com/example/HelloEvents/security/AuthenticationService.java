@@ -42,8 +42,14 @@ public class AuthenticationService {
                 .roles(user.getRole().name())
                 .build();
 
-        var jwtToken = jwtService.generateToken(userDetails);
-        return new AuthenticationResponse(jwtToken);
+        var jwtToken = jwtService.generateToken(userDetails, user);
+        return new AuthenticationResponse(
+                jwtToken,
+                user.getId(),
+                user.getName(),
+                user.getEmail(),
+                user.getRole().name()
+        );
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
@@ -62,7 +68,13 @@ public class AuthenticationService {
                 .roles(user.getRole().name())
                 .build();
 
-        var jwtToken = jwtService.generateToken(userDetails);
-        return new AuthenticationResponse(jwtToken);
+        var jwtToken = jwtService.generateToken(userDetails, user);
+        return new AuthenticationResponse(
+                jwtToken,
+                user.getId(),
+                user.getName(),
+                user.getEmail(),
+                user.getRole().name()
+        );
     }
 }
