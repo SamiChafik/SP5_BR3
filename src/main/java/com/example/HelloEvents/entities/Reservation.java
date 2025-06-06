@@ -1,10 +1,6 @@
 package com.example.HelloEvents.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 
@@ -12,7 +8,7 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
-    private Long idreservation;
+    private Long reservation_id;
     @ManyToOne
     private User user;
 
@@ -22,18 +18,18 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(Long idreservation, User user, Event event) {
-        this.idreservation = idreservation;
+    public Reservation(Long reservation_id, User user, Event event) {
+        this.reservation_id = reservation_id;
         this.user = user;
         this.event = event;
     }
 
-    public Long getIdreservation() {
-        return idreservation;
+    public Long getReservation_id() {
+        return reservation_id;
     }
 
-    public void setIdreservation(Long idreservation) {
-        this.idreservation = idreservation;
+    public void setReservation_id(Long idreservation) {
+        this.reservation_id = idreservation;
     }
 
     public User getUser() {

@@ -1,8 +1,6 @@
 package com.example.HelloEvents.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.List;
 
@@ -11,7 +9,7 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
-    private Long idEvent;
+    private Long event_id;
 
     private String eventname;
 
@@ -25,12 +23,12 @@ public class Event {
     @ManyToOne
     private User user;
 
-    public Long getIdEvent() {
-        return idEvent;
+    public Long getEvent_id() {
+        return event_id;
     }
 
-    public void setIdEvent(Long idEvent) {
-        this.idEvent = idEvent;
+    public void setEvent_id(Long idEvent) {
+        this.event_id = idEvent;
     }
 
     public String getEventname() {
