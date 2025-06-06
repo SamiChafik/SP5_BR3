@@ -31,11 +31,11 @@ public class ResrvationService {
 
     @Transactional
     public ReservationDto Resrever(ReservationDto reservationDto){
-        var user = userRepository.findById(reservationDto.getUserId()).orElse(null);
-        var event = eventRepository.findById(reservationDto.getEventId()).orElse(null);
+        var user = userRepository.findById(reservationDto.getUser_id()).orElse(null);
+        var event = eventRepository.findById(reservationDto.getEvent_id()).orElse(null);
 
         var res = reservationRepository.save(new Reservation(null,user,event));
-        return new ReservationDto(res.getIdreservation(), res.getUser().getId(), res.getEvent().getIdEvent());
+        return new ReservationDto(res.getReservation_id(), res.getUser().getId(), res.getEvent().getEvent_id());
     }
 
     public List<ReservationDto>  getAllReservation(){
@@ -48,11 +48,4 @@ public class ResrvationService {
                 .map(ress->reservationMapper.reservationToDto(ress))
                 .orElseThrow(()->new RuntimeException("Reservation Not Found"));
     }
-
-    public Long getReservationCount (Long event_id) {
-        return reservationRepository.getCountOfReservationsByEvent(event_id);
-    }
-
-
-
 }
