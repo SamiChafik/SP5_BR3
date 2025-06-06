@@ -1,25 +1,24 @@
 package com.example.HelloEvents.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @NoArgsConstructor
 @AllArgsConstructor
 public class EventDto {
 
-    private Long idEvent;
+    private Long event_id;
     private String eventname;
     private String description;
     private String type;
+//    private Long user_id;
 
-    public Long getIdEvent() {
-        return idEvent;
+    public Long getEvent_id() {
+        return event_id;
     }
 
-    public void setIdEvent(Long idEvent) {
-        this.idEvent = idEvent;
+    public void setEvent_id(Long event_id) {
+        this.event_id = event_id;
     }
 
     public String getEventname() {
@@ -45,4 +44,12 @@ public class EventDto {
     public void setType(String type) {
         this.type = type;
     }
+
+//    public Long getUser_id() {
+//        return user_id;
+//    }
+//
+//    public void setUser_id(Long user_id) {
+//        this.user_id = user_id;
+//    }
 }

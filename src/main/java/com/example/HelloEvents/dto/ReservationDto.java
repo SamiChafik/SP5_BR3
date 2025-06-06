@@ -1,43 +1,40 @@
 package com.example.HelloEvents.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
 public class ReservationDto {
-    Long idReservation;
-     Long userId;
-     Long eventId;
+    Long reservation_id;
+     Long user_id;
+     Long event_id;
 
     public ReservationDto() {
     }
 
-    public ReservationDto(Long idReservation, Long userId, Long eventId) {
-        this.idReservation = idReservation;
-        this.userId = userId;
-        this.eventId = eventId;
+    public ReservationDto(Long idReservation, Long user_id, Long event_id) {
+        this.reservation_id = idReservation;
+        this.user_id = user_id;
+        this.event_id = event_id;
     }
 
-    public Long getIdReservation() {
-        return idReservation;
+    public Long getReservation_id() {
+        return reservation_id;
     }
 
-    public void setIdReservation(Long idReservation) {
-        this.idReservation = idReservation;
+    public void setReservation_id(Long reservation_id) {
+        this.reservation_id = reservation_id;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getUser_id() {
+        return user_id;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
     }
 
-    public Long getEventId() {
-        return eventId;
+    public Long getEvent_id() {
+        return event_id;
     }
 
-    public void setEventId(Long eventId) {
-        this.eventId = eventId;
+    public void setEvent_id(Long event_id) {
+        this.event_id = event_id;
     }
 }
