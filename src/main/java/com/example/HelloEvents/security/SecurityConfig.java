@@ -35,7 +35,7 @@ public class SecurityConfig {
 
                         // Client endpoints
 //                        .requestMatchers("/user/{id}").hasAnyRole("CLIENT") // View profile
-                        .requestMatchers("/reservation/**").hasRole("CLIENT") // All reservation operations
+                        .requestMatchers("/reservation/**").hasAnyRole("CLIENT", "ADMIN") // All reservation operations
 
                         // Admin endpoints
                         .requestMatchers("/event/**").hasRole("ADMIN") // All other event operations
